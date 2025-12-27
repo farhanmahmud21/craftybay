@@ -1,6 +1,5 @@
 import 'package:craftybay/features/ui/screens/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../widgets/app_logo.dart';
 
@@ -31,18 +30,21 @@ class _SplashscreenState extends State<Splashscreen> {
     return Scaffold(
       body: SafeArea(
         child: Center(
-          child: Column(
-            children: [
-              Spacer(),
-              AppLogo(),
-              Spacer(),
-              CircularProgressIndicator(),
-              SizedBox(height: 20),
-              Text(
-                'Version 1.0',
-                style: TextStyle(color: Colors.grey, fontSize: 13),
-              ),
-            ],
+          child: Padding(
+            padding: EdgeInsetsGeometry.all(16),
+            child: Column(
+              children: [
+                Spacer(),
+                AppLogo(),
+                Spacer(),
+                CircularProgressIndicator(),
+                SizedBox(height: 20),
+                Text(
+                  'Version 1.0',
+                  style: TextStyle(color: Colors.grey, fontSize: 13),
+                ),
+              ],
+            ),
           ),
         ),
       ),
