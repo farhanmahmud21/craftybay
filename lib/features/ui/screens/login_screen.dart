@@ -1,3 +1,4 @@
+import 'package:craftybay/features/ui/screens/signup_screen.dart';
 import 'package:craftybay/features/ui/widgets/app_logo.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.all(24),
           child: SingleChildScrollView(
             child: Form(
-              autovalidateMode: AutovalidateMode.always,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               key: _formKey,
               child: Column(
                 children: [
@@ -39,6 +40,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   SizedBox(height: 24),
                   TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    textInputAction: TextInputAction.next,
+
                     controller: _emailController,
                     decoration: InputDecoration(hintText: 'E-mail address'),
                     validator: (String? value) {
@@ -51,8 +55,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   SizedBox(height: 8),
                   TextFormField(
+                    textInputAction: TextInputAction.done,
                     controller: _passController,
-
+                    obscureText: true,
+                    keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(hintText: 'Password'),
 
                     validator: (String? value) {
@@ -65,11 +71,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   SizedBox(height: 16),
                   ElevatedButton(
-                    onPressed: _onTapNext,
+                    onPressed: _onTapLogin,
                     child: Text(
                       'Login',
                       style: theme.labelLarge!.copyWith(color: Colors.white),
                     ),
+                  ),
+                  SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Don\'t have any account ?'),
+
+                      TextButton(
+                        onPressed: _onTapSignUp,
+                        child: Text('Sign Up'),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -80,7 +98,11 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void _onTapNext() {
+  void _onTapLogin() {
     if (_formKey.currentState!.validate()) {}
+  }
+
+  void _onTapSignUp() {
+    Navigator.pushReplacementNamed(context, SignupScreen.name);
   }
 }
