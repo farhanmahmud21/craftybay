@@ -1,9 +1,9 @@
-import 'package:craftybay/features/ui/screens/home_screen.dart';
-import 'package:craftybay/features/ui/screens/login_screen.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/app_logo.dart';
+import '../../../home/ui/screens/home_screen.dart';
+import 'login_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});

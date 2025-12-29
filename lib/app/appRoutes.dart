@@ -1,9 +1,9 @@
-import 'package:craftybay/features/ui/screens/home_screen.dart';
-import 'package:craftybay/features/ui/screens/login_screen.dart';
-import 'package:craftybay/features/ui/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../features/ui/screens/splashScreen.dart';
+import '../features/home/ui/screens/home_screen.dart';
+import '../features/auth/ui/screens/login_screen.dart';
+import '../features/auth/ui/screens/signup_screen.dart';
+import '../features/auth/ui/screens/splashScreen.dart';
 
 class Approutes {
   static Route<dynamic> getappRoute(RouteSettings settings) {

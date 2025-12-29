@@ -1,7 +1,10 @@
-import 'package:craftybay/features/ui/screens/signup_screen.dart';
-import 'package:craftybay/features/ui/widgets/app_logo.dart';
+import 'package:craftybay/features/auth/ui/screens/signup_screen.dart';
+
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/app_logo.dart';
+import '../../../home/ui/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -99,7 +102,11 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _onTapLogin() {
-    if (_formKey.currentState!.validate()) {}
+    if (_formKey.currentState!.validate()) {
+      Navigator.pushReplacementNamed(context, HomeScreen.name);
+      _emailController.clear();
+      _passController.clear();
+    }
   }
 
   void _onTapSignUp() {

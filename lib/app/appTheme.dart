@@ -23,6 +23,11 @@ class Apptheme {
           ),
         ),
       ),
+
+      // Icon Button
+      iconButtonTheme: IconButtonThemeData(
+        style: IconButton.styleFrom(backgroundColor: Colors.grey.shade300),
+      ),
     );
   }
 

@@ -1,7 +1,7 @@
-import 'package:craftybay/features/ui/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/app_logo.dart';
+import 'login_screen.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
