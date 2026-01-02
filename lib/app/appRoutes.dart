@@ -1,3 +1,4 @@
+import 'package:craftybay/features/product/ui/screens/product_categories_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../features/home/ui/screens/home_screen.dart';
@@ -20,7 +21,9 @@ class Approutes {
     if (settings.name == HomeScreen.name) {
       ScreenWidget = HomeScreen();
     }
-
+    if (settings.name == ProductCategoriesScreen.name) {
+      ScreenWidget = ProductCategoriesScreen();
+    }
     return MaterialPageRoute(builder: (context) => ScreenWidget);
   }
 }

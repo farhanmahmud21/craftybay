@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class Apptheme {
   static ThemeData get lightTheme {
     return ThemeData(
-      colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF07ADAE)),
-
+      //Color(0xFF07ADAE)
+      colorScheme: ColorScheme.fromSeed(seedColor: AppColor.themeColor),
       textTheme: _textTheme,
       //Input Decoration
       inputDecorationTheme: _inputDecorationTheme,
@@ -41,11 +41,20 @@ class Apptheme {
   static TextTheme get _textTheme {
     return TextTheme(
       titleLarge: TextStyle(
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w800,
         fontSize: 28,
         color: Color(0xEC111010),
       ),
-
+      titleMedium: TextStyle(
+        fontWeight: FontWeight.w600,
+        fontSize: 24,
+        color: Color(0xEC111010),
+      ),
+      titleSmall: TextStyle(
+        fontWeight: FontWeight.w600,
+        fontSize: 20,
+        color: Color(0xEC111010),
+      ),
       labelMedium: TextStyle(
         fontWeight: FontWeight.w400,
         fontSize: 14,

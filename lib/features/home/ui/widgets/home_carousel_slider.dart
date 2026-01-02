@@ -9,19 +9,23 @@ class HomeCarouselSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = CarouselSliderController();
     ValueNotifier activeIndex = ValueNotifier(0);
     return Column(
       children: [
+        // Carousel View niye khelbo
         ValueListenableBuilder(
           valueListenable: activeIndex,
           builder: (context, value, child) => CarouselSlider.builder(
             itemCount: 5,
+            carouselController: controller,
             itemBuilder: (context, index, realIndex) => Container(
               margin: EdgeInsetsGeometry.all(8),
               color: activeIndex.value >= 2 ? AppColor.themeColor : Colors.red,
-              child: Center(child: Text('${index}')),
+              child: Center(child: Text('$index')),
             ),
             options: CarouselOptions(
+              autoPlay: true,
               // aspectRatio: 16 / 9,
               height: 200,
               viewportFraction: 1,
@@ -40,6 +44,7 @@ class HomeCarouselSlider extends StatelessWidget {
           builder: (context, value, child) => AnimatedSmoothIndicator(
             onDotClicked: (index) {
               activeIndex.value = index;
+              controller.jumpToPage(index);
             },
             activeIndex: activeIndex.value,
             count: 5,

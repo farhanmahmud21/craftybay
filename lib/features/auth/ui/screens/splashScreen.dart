@@ -1,3 +1,4 @@
+import 'package:craftybay/app/appColor.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/app_logo.dart';
@@ -37,7 +38,7 @@ class _SplashscreenState extends State<Splashscreen> {
                 Spacer(),
                 AppLogo(),
                 Spacer(),
-                CircularProgressIndicator(),
+                CircularProgressIndicator(color: AppColor.themeColor),
                 SizedBox(height: 20),
                 Text(
                   'Version 1.0',
