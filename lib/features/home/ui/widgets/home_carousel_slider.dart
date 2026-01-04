@@ -25,7 +25,7 @@ class HomeCarouselSlider extends StatelessWidget {
               child: Center(child: Text('$index')),
             ),
             options: CarouselOptions(
-              autoPlay: true,
+              autoPlay: false,
               // aspectRatio: 16 / 9,
               height: 200,
               viewportFraction: 1,

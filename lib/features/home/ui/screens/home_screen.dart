@@ -1,5 +1,5 @@
 import 'package:craftybay/features/home/ui/widgets/product_category.dart';
-import 'package:craftybay/features/product/ui/screens/product_categories_screen.dart';
+import 'package:craftybay/features/common/ui/screens/product_categories_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/appbar.dart';
@@ -32,10 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
               buildSectionHeader(
                 title: 'Catagories',
                 onTapText: () {
-                  Navigator.pushReplacementNamed(
-                    context,
-                    ProductCategoriesScreen.name,
-                  );
+                  Navigator.pushNamed(context, ProductCategoriesScreen.name);
                 },
               ),
               SizedBox(

@@ -1,4 +1,5 @@
-import 'package:craftybay/features/product/ui/screens/product_categories_screen.dart';
+import 'package:craftybay/features/common/ui/screens/main_bottom_nav_screen.dart';
+import 'package:craftybay/features/common/ui/screens/product_categories_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../features/home/ui/screens/home_screen.dart';
@@ -11,6 +12,9 @@ class Approutes {
     late final Widget ScreenWidget;
     if (settings.name == Splashscreen.name) {
       ScreenWidget = Splashscreen();
+    }
+    if (settings.name == MainBottomNavScreen.name) {
+      ScreenWidget = MainBottomNavScreen();
     }
     if (settings.name == LoginScreen.name) {
       ScreenWidget = LoginScreen();

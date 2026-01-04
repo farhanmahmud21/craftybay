@@ -1,4 +1,5 @@
 import 'package:craftybay/features/auth/ui/screens/signup_screen.dart';
+import 'package:craftybay/features/common/ui/screens/main_bottom_nav_screen.dart';
 
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
@@ -103,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _onTapLogin() {
     if (_formKey.currentState!.validate()) {
-      Navigator.pushReplacementNamed(context, HomeScreen.name);
+      Navigator.pushReplacementNamed(context, MainBottomNavScreen.name);
       _emailController.clear();
       _passController.clear();
     }

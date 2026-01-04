@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 class Apptheme {
   static ThemeData get lightTheme {
     return ThemeData(
+      useMaterial3: true,
       //Color(0xFF07ADAE)
       colorScheme: ColorScheme.fromSeed(seedColor: AppColor.themeColor),
       textTheme: _textTheme,
+
       //Input Decoration
       inputDecorationTheme: _inputDecorationTheme,
 

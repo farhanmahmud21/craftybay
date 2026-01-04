@@ -15,9 +15,15 @@ class ProductCategoryItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             color: AppColor.themeColor.withOpacity(0.2),
           ),
-          child: Icon(Icons.computer, color: AppColor.themeColor, size: 40),
+          child: Icon(Icons.computer, color: AppColor.themeColor, size: 32),
         ),
-        Text('Computers', style: tTheme.labelLarge),
+
+        Text(
+          'Computers',
+          style: tTheme.labelLarge,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
       ],
     );
   }
