@@ -2,7 +2,7 @@ import 'package:craftybay/app/appColor.dart';
 import 'package:craftybay/app/app_AssetsPath.dart';
 import 'package:craftybay/features/common/ui/controllers/main_bottom_nav_controller.dart';
 import 'package:craftybay/features/home/ui/widgets/product_card.dart';
-import 'package:craftybay/features/home/ui/widgets/product_category.dart';
+import 'package:craftybay/features/product/ui/widgets/product_category.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -55,7 +55,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 buildSectionHeader(title: 'Popular', onTapText: () {}),
                 _getPopularProducts(),
                 buildSectionHeader(title: 'Special', onTapText: () {}),
+                _getSpecialProducts(),
                 buildSectionHeader(title: 'New', onTapText: () {}),
+                _getNewProducts(),
               ],
             ),
           ),
@@ -72,6 +74,32 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Row(
         spacing: 8,
         children: [1, 2, 3, 4].map((e) => ProductCard()).toList(),
+      ),
+    );
+  }
+
+  Widget _getSpecialProducts() {
+    // return ProductCard();
+
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        spacing: 8,
+        children: [1, 2, 3, 4].map((e) => ProductCard()).toList(),
+      ),
+    );
+  }
+
+  Widget _getNewProducts() {
+    // return ProductCard();
+
+    return SizedBox(
+      height: 175,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        separatorBuilder: (context, index) => SizedBox(width: 10),
+        itemBuilder: (context, index) => ProductCard(),
+        itemCount: 4,
       ),
     );
   }

@@ -1,5 +1,7 @@
 import 'package:craftybay/features/common/ui/screens/main_bottom_nav_screen.dart';
-import 'package:craftybay/features/common/ui/screens/product_categories_screen.dart';
+import 'package:craftybay/features/product/ui/screens/product_categories_screen.dart';
+import 'package:craftybay/features/product/ui/screens/product_list_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../features/home/ui/screens/home_screen.dart';
@@ -12,21 +14,19 @@ class Approutes {
     late final Widget ScreenWidget;
     if (settings.name == Splashscreen.name) {
       ScreenWidget = Splashscreen();
-    }
-    if (settings.name == MainBottomNavScreen.name) {
+    } else if (settings.name == MainBottomNavScreen.name) {
       ScreenWidget = MainBottomNavScreen();
-    }
-    if (settings.name == LoginScreen.name) {
+    } else if (settings.name == LoginScreen.name) {
       ScreenWidget = LoginScreen();
-    }
-    if (settings.name == SignupScreen.name) {
+    } else if (settings.name == SignupScreen.name) {
       ScreenWidget = SignupScreen();
-    }
-    if (settings.name == HomeScreen.name) {
+    } else if (settings.name == HomeScreen.name) {
       ScreenWidget = HomeScreen();
-    }
-    if (settings.name == ProductCategoriesScreen.name) {
+    } else if (settings.name == ProductCategoriesScreen.name) {
       ScreenWidget = ProductCategoriesScreen();
+    } else if (settings.name == ProductListScreen.name) {
+      final category = settings.arguments as String;
+      ScreenWidget = ProductListScreen(catagory: category);
     }
     return MaterialPageRoute(builder: (context) => ScreenWidget);
   }

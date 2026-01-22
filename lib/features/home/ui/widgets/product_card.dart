@@ -52,7 +52,7 @@ class ProductCard extends StatelessWidget {
                     Wrap(
                       children: [
                         Icon(Icons.star, size: 18, color: Colors.amber),
-                        Text('4.8'),
+                        Text('4.8', style: TextStyle(color: Colors.grey)),
                       ],
                     ),
 

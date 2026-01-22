@@ -1,4 +1,4 @@
-import 'package:craftybay/features/home/ui/widgets/product_category.dart';
+import 'package:craftybay/features/product/ui/widgets/product_category.dart';
 import 'package:flutter/material.dart';
 
 class ProductCategoriesScreen extends StatelessWidget {
