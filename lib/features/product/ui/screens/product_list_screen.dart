@@ -1,4 +1,4 @@
-import 'package:craftybay/features/home/ui/widgets/product_card.dart';
+import 'package:craftybay/features/product/ui/widgets/product_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

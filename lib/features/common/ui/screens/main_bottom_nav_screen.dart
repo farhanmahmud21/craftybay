@@ -1,5 +1,3 @@
-import 'package:craftybay/features/product/ui/screens/product_categories_screen.dart';
-import 'package:craftybay/features/home/ui/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';

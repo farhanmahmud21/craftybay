@@ -32,7 +32,7 @@ class ProductCard extends StatelessWidget {
                 topRight: Radius.circular(16),
               ),
             ),
-            child: Image.asset(AppAssetspath.shoeImage, height: 80, width: 80),
+            child: Image.asset(AppAssetspath.shoeImage0, height: 80, width: 80),
           ),
 
           Padding(

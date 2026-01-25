@@ -1,7 +1,8 @@
 import 'package:craftybay/app/appColor.dart';
 import 'package:craftybay/app/app_AssetsPath.dart';
 import 'package:craftybay/features/common/ui/controllers/main_bottom_nav_controller.dart';
-import 'package:craftybay/features/home/ui/widgets/product_card.dart';
+import 'package:craftybay/features/product/ui/widgets/product_card.dart';
+import 'package:craftybay/features/product/ui/screens/product_details_screen.dart';
 import 'package:craftybay/features/product/ui/widgets/product_category.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -35,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ProductSearchBar(searchC: searchC),
                 HomeCarouselSlider(),
                 buildSectionHeader(
-                  title: 'Catagories',
+                  title: 'Categories',
                   onTapText: () {
                     Get.find<MainBottomNavController>().moveToCategory();
                   },
@@ -73,7 +74,18 @@ class _HomeScreenState extends State<HomeScreen> {
       scrollDirection: Axis.horizontal,
       child: Row(
         spacing: 8,
-        children: [1, 2, 3, 4].map((e) => ProductCard()).toList(),
+        children: [1, 2, 3, 4]
+            .map(
+              (e) => GestureDetector(
+                onTap: () => Navigator.pushNamed(
+                  context,
+                  ProductDetailsScreen.name,
+                  arguments: '123',
+                ),
+                child: ProductCard(),
+              ),
+            )
+            .toList(),
       ),
     );
   }
