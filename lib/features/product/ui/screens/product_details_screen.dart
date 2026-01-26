@@ -143,7 +143,52 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           ),
 
           // Bottom Container
-          BottomPriceAndButtonContainer(),
+          _buildPriceAndCartSection(context),
+          // BottomPriceAndButtonContainer(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPriceAndCartSection(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(16),
+
+      decoration: BoxDecoration(
+        color: AppColor.themeColor.withOpacity(0.25),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16),
+        ),
+      ),
+
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            children: [
+              Text('Price', style: Theme.of(context).textTheme.labelLarge),
+              Text(
+                '\$1000',
+                style: Theme.of(
+                  context,
+                ).textTheme.labelLarge!.copyWith(color: AppColor.themeColor),
+              ),
+            ],
+          ),
+
+          SizedBox(
+            width: 120,
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Text(
+                'Add to Cart',
+                style: Theme.of(
+                  context,
+                ).textTheme.labelLarge!.copyWith(color: Colors.white),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -222,55 +267,6 @@ class star_review extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class BottomPriceAndButtonContainer extends StatelessWidget {
-  const BottomPriceAndButtonContainer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(16),
-
-      decoration: BoxDecoration(
-        color: AppColor.themeColor.withOpacity(0.25),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(16),
-          topRight: Radius.circular(16),
-        ),
-      ),
-
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            children: [
-              Text('Price', style: Theme.of(context).textTheme.labelLarge),
-              Text(
-                '\$1000',
-                style: Theme.of(
-                  context,
-                ).textTheme.labelLarge!.copyWith(color: AppColor.themeColor),
-              ),
-            ],
-          ),
-
-          SizedBox(
-            width: 120,
-            child: ElevatedButton(
-              onPressed: () {},
-              child: Text(
-                'Add to Cart',
-                style: Theme.of(
-                  context,
-                ).textTheme.labelLarge!.copyWith(color: Colors.white),
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

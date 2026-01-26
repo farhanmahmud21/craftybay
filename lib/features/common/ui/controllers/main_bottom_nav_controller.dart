@@ -1,3 +1,4 @@
+import 'package:craftybay/features/cart/ui/screens/cart_screen.dart';
 import 'package:craftybay/features/product/ui/screens/product_list_screen.dart';
 import 'package:craftybay/features/wishlist/screens/wishlist_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,7 +12,8 @@ class MainBottomNavController extends GetxController {
   List<Widget> screens = [
     HomeScreen(),
     ProductCategoriesScreen(),
-    ProductListScreen(catagory: 'Cart'),
+
+    CartScreen(),
     WishListScreen(),
   ];
 
