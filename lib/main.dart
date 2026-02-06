@@ -3,7 +3,6 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-
 import 'app/app.dart';
 
 Future<void> main() async {
@@ -18,5 +17,4 @@ Future<void> main() async {
     return true;
   };
   runApp(CraftyBay());
-
 }

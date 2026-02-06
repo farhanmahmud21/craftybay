@@ -1,5 +1,9 @@
+import 'package:craftybay/core/services/ui/snack_bar__message.dart';
+import 'package:craftybay/features/auth/data/models/signUp_request_model.dart';
+import 'package:craftybay/features/auth/ui/controllers/signup_controller.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../widgets/app_logo.dart';
 import '../../../home/ui/screens/home_screen.dart';
@@ -27,6 +31,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
+  final controller = Get.find<SignupController>();
   @override
   Widget build(BuildContext context) {
     final TextTheme theme = Theme.of(context).textTheme;
@@ -169,11 +174,19 @@ class _SignupScreenState extends State<SignupScreen> {
                     },
                   ),
                   SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: _onTapSignUp,
-                    child: Text(
-                      'Sign Up',
-                      style: theme.labelLarge!.copyWith(color: Colors.white),
+                  GetBuilder<SignupController>(
+                    builder: (_) => Visibility(
+                      visible: controller.inProgress == false,
+                      replacement: Center(child: CircularProgressIndicator()),
+                      child: ElevatedButton(
+                        onPressed: _onTapSignUp,
+                        child: Text(
+                          'Sign Up',
+                          style: theme.labelLarge!.copyWith(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                   SizedBox(height: 16),
@@ -198,7 +211,37 @@ class _SignupScreenState extends State<SignupScreen> {
     Navigator.pushReplacementNamed(context, LoginScreen.name);
   }
 
-  void _onTapSignUp() {
-    Navigator.pushReplacementNamed(context, HomeScreen.name);
+  void _onTapSignUp() async {
+    if (_formkey.currentState!.validate()) {
+      final model = SignupRequestModel(
+        first_name: _firstNController.text.trim(),
+        last_name: _lastNController.text.trim(),
+        email: _emailController.text.trim(),
+        password: _passController.text.trim(),
+        city: _cityController.text.trim(),
+      );
+
+      final bool isSuccess = await controller.signup(model);
+      if (isSuccess) {
+        //Navigate to verify screen
+        // Get.snackbar('Success', controller.message);
+        showSnackMessage(context, controller.message);
+      } else {
+        showSnackMessage(context, controller.errorMessage!, true);
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passController.dispose();
+    _rePassController.dispose();
+    _firstNController.dispose();
+    _lastNController.dispose();
+    _mobileNController.dispose();
+    _cityController.dispose();
+    _addressController.dispose();
+    super.dispose();
   }
 }
