@@ -1,6 +1,7 @@
-import 'package:craftybay/core/services/ui/snack_bar__message.dart';
+import 'package:craftybay/core/services/ui/widgets/snack_bar__message.dart';
 import 'package:craftybay/features/auth/data/models/signUp_request_model.dart';
 import 'package:craftybay/features/auth/ui/controllers/signup_controller.dart';
+import 'package:craftybay/features/auth/ui/screens/verify__otp_screen.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -226,6 +227,11 @@ class _SignupScreenState extends State<SignupScreen> {
         //Navigate to verify screen
         // Get.snackbar('Success', controller.message);
         showSnackMessage(context, controller.message);
+        Navigator.pushNamed(
+          context,
+          VerifyOtpScreen.name,
+          arguments: _emailController.text.trim(),
+        );
       } else {
         showSnackMessage(context, controller.errorMessage!, true);
       }
