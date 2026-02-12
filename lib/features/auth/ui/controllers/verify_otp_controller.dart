@@ -1,7 +1,9 @@
 import 'package:craftybay/app/urls.dart';
 import 'package:craftybay/core/services/network/network_client.dart';
 import 'package:craftybay/features/auth/data/models/verify_otp_request.dart';
-import 'package:craftybay/features/auth/ui/controllers/signup_controller.dart';
+import 'package:craftybay/features/common/ui/controllers/auth_controller.dart';
+import 'package:craftybay/features/common/ui/models/user_model.dart';
+
 import 'package:get/get.dart';
 
 class VerifyOtpController extends GetxController {
@@ -32,6 +34,7 @@ class VerifyOtpController extends GetxController {
         .postRequest(Urls.verify_otp, body: model.toJson());
 
     if (response.isSuccess) {
+await Get.find<AuthController>().saveUserData(response.responseData!['data']['token'], UserModel.fromJson(response.responseData!['data']['user']));
       _message = response.responseData!['msg'];
       _errorMessage = null;
       _isSuccess = true;

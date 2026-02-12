@@ -4,7 +4,6 @@ import 'package:craftybay/app/app_AssetsPath.dart';
 import 'package:craftybay/features/product/ui/widgets/image_slider.dart';
 import 'package:craftybay/features/product/ui/widgets/inc_dec_button.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/snackbar/snackbar.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({super.key, required this.productId});
