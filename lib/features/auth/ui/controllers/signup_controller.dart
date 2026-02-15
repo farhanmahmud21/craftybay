@@ -17,8 +17,6 @@ class SignupController extends GetxController {
   String? get errorMessage => _errorMessage;
 
   String get message => _message;
-  // Model Expose
-  // actual method
 
   Future<bool> signup(SignupRequestModel model) async {
     _isProgress = true;
