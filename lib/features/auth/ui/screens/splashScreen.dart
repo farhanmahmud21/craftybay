@@ -1,5 +1,8 @@
 import 'package:craftybay/app/appColor.dart';
+import 'package:craftybay/features/common/ui/controllers/auth_controller.dart';
+import 'package:craftybay/features/common/ui/screens/main_bottom_nav_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../widgets/app_logo.dart';
 import 'login_screen.dart';
@@ -16,8 +19,16 @@ class Splashscreen extends StatefulWidget {
 class _SplashscreenState extends State<Splashscreen> {
   Future<void> _moveToNextPage() async {
     await Future.delayed(Duration(seconds: 3));
-
-    Navigator.pushReplacementNamed(context, LoginScreen.name);
+    bool isSuccess = await Get.find<AuthController>().isLoggedIn();
+    if (isSuccess) {
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        MainBottomNavScreen.name,
+        (predicate) => false,
+      );
+    } else {
+      Navigator.pushReplacementNamed(context, LoginScreen.name);
+    }
   }
 
   @override

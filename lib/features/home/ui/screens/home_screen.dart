@@ -1,6 +1,5 @@
-import 'package:craftybay/app/appColor.dart';
-import 'package:craftybay/app/app_AssetsPath.dart';
 import 'package:craftybay/features/common/ui/controllers/main_bottom_nav_controller.dart';
+import 'package:craftybay/features/home/ui/controllers/home_slider_controller.dart';
 import 'package:craftybay/features/product/ui/widgets/product_card.dart';
 import 'package:craftybay/features/product/ui/screens/product_details_screen.dart';
 import 'package:craftybay/features/product/ui/widgets/product_category.dart';
@@ -21,7 +20,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final TextEditingController searchC = .new();
+  final TextEditingController searchC = TextEditingController();
+  final controller = Get.find<HomeSliderController>();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,13 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               children: [
                 ProductSearchBar(searchC: searchC),
-                HomeCarouselSlider(),
+                GetBuilder<HomeSliderController>(
+                  builder: (_) => Visibility(
+                    visible: controller.inProgress == false,
+                    replacement: CircularProgressIndicator.adaptive(),
+                    child: HomeCarouselSlider(sliders: controller.sliders),
+                  ),
+                ),
                 buildSectionHeader(
                   title: 'Categories',
                   onTapText: () {

@@ -61,20 +61,33 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                   ),
                   SizedBox(height: 8),
-                  TextFormField(
-                    textInputAction: TextInputAction.done,
-                    controller: _passController,
-                    obscureText: true,
-                    keyboardType: TextInputType.visiblePassword,
-                    decoration: InputDecoration(hintText: 'Password'),
+                  GetBuilder<LoginController>(
+                    builder: (_) => TextFormField(
+                      textInputAction: TextInputAction.done,
+                      controller: _passController,
+                      obscureText: Get.find<LoginController>().isObesecureText,
 
-                    validator: (String? value) {
-                      if ((value?.trim().isEmpty ?? true) ||
-                          (value!.length <= 6)) {
-                        return 'Enter your password';
-                      }
-                      return null;
-                    },
+                      keyboardType: TextInputType.visiblePassword,
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        suffixIcon: InkWell(
+                          onTap: Get.find<LoginController>().changeObsecure,
+                          child:
+                              Get.find<LoginController>().isObesecureText ==
+                                  true
+                              ? Icon(Icons.visibility)
+                              : Icon(Icons.visibility_off),
+                        ),
+                      ),
+
+                      validator: (String? value) {
+                        if ((value?.trim().isEmpty ?? true) ||
+                            (value!.length <= 6)) {
+                          return 'Enter your password';
+                        }
+                        return null;
+                      },
+                    ),
                   ),
                   SizedBox(height: 16),
                   GetBuilder<LoginController>(

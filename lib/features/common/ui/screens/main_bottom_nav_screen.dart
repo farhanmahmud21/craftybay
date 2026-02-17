@@ -1,3 +1,4 @@
+import 'package:craftybay/features/home/ui/controllers/home_slider_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -15,6 +16,11 @@ class MainBottomNavScreen extends StatefulWidget {
 
 class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
   final MainBottomNavController control = Get.find<MainBottomNavController>();
+  @override
+  void initState() {
+    super.initState();
+    Get.find<HomeSliderController>().getSlider();
+  }
 
   @override
   Widget build(BuildContext context) {

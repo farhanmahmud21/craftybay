@@ -12,6 +12,10 @@ class LoginController extends GetxController {
   //Loading State
   bool _isProgress = false;
 
+  bool _isObsecureText = false;
+
+  bool get isObesecureText => _isObsecureText;
+
   late String _message;
   String? _errorMessage;
 
@@ -20,6 +24,11 @@ class LoginController extends GetxController {
   String get message => _message;
 
   String? get errorMessage => _errorMessage;
+
+  void changeObsecure() {
+    _isObsecureText = !_isObsecureText;
+    update();
+  }
 
   //Actual Method
 
