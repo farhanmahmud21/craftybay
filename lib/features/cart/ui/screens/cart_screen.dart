@@ -1,5 +1,5 @@
 import 'package:craftybay/app/appColor.dart';
-import 'package:craftybay/app/app_AssetsPath.dart';
+
 import 'package:craftybay/features/cart/ui/widgets/cart_item.dart';
 
 import 'package:flutter/material.dart';

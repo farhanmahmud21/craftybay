@@ -1,3 +1,4 @@
+import 'package:craftybay/features/common/ui/controllers/category_list_controller.dart';
 import 'package:craftybay/features/product/ui/widgets/product_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: GridView.builder(
-          itemCount: 50,
+          itemCount: 10,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
             mainAxisSpacing: 16,

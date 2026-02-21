@@ -1,3 +1,4 @@
+import 'package:craftybay/features/common/ui/controllers/category_list_controller.dart';
 import 'package:craftybay/features/home/ui/controllers/home_slider_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,6 +21,7 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
   void initState() {
     super.initState();
     Get.find<HomeSliderController>().getSlider();
+    Get.find<CategoryListController>().getCategoryList();
   }
 
   @override

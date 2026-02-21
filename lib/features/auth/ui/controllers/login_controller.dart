@@ -1,12 +1,9 @@
-import 'dart:convert';
-
 import 'package:craftybay/app/urls.dart';
 import 'package:craftybay/core/services/network/network_client.dart';
 import 'package:craftybay/features/auth/data/models/login_request_model.dart';
 import 'package:craftybay/features/common/ui/controllers/auth_controller.dart';
-import 'package:craftybay/features/common/ui/models/user_model.dart';
+import 'package:craftybay/features/common/data/models/user_model.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 
 class LoginController extends GetxController {
   //Loading State

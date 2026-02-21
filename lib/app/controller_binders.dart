@@ -4,6 +4,7 @@ import 'package:craftybay/features/auth/ui/controllers/signup_controller.dart';
 import 'package:craftybay/features/auth/ui/controllers/verify_otp_controller.dart';
 import 'package:craftybay/features/auth/ui/screens/login_screen.dart';
 import 'package:craftybay/features/common/ui/controllers/auth_controller.dart';
+import 'package:craftybay/features/common/ui/controllers/category_list_controller.dart';
 import 'package:craftybay/features/common/ui/controllers/main_bottom_nav_controller.dart';
 import 'package:craftybay/features/home/ui/controllers/home_slider_controller.dart';
 import 'package:get/get.dart';
@@ -20,6 +21,7 @@ class ControllerBinders extends Bindings {
         commonHeaders: commonHeaders(),
       ),
     );
+    Get.put(CatagoryListController());
     Get.put(SignupController());
 
     Get.put(VerifyOtpController());

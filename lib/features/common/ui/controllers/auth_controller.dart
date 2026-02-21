@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:craftybay/features/common/ui/models/user_model.dart';
+import 'package:craftybay/features/common/data/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController {
