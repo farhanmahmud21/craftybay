@@ -1,8 +1,9 @@
+import 'package:craftybay/features/common/ui/controllers/category_list_controller.dart';
 import 'package:craftybay/features/common/ui/controllers/main_bottom_nav_controller.dart';
 import 'package:craftybay/features/home/ui/controllers/home_slider_controller.dart';
 import 'package:craftybay/features/product/ui/widgets/product_card.dart';
 import 'package:craftybay/features/product/ui/screens/product_details_screen.dart';
-import 'package:craftybay/features/product/ui/widgets/product_category.dart';
+import 'package:craftybay/features/product/ui/widgets/product_category_item%5D.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,6 +23,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController searchC = TextEditingController();
   final controller = Get.find<HomeSliderController>();
+  final category_controller = Get.find<CategoryListController>();
 
   @override
   Widget build(BuildContext context) {
@@ -47,17 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Get.find<MainBottomNavController>().moveToCategory();
                   },
                 ),
-                SizedBox(
-                  height: 96,
-                  child: ListView.separated(
-                    separatorBuilder: (context, index) => SizedBox(width: 20),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 15,
-                    // primary: true,
-                    // shrinkWrap: true,
-                    itemBuilder: (context, index) => ProductCategoryItem(),
-                  ),
-                ),
+                _getCategoryList(),
 
                 buildSectionHeader(title: 'Popular', onTapText: () {}),
                 _getPopularProducts(),
@@ -67,6 +59,24 @@ class _HomeScreenState extends State<HomeScreen> {
                 _getNewProducts(),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _getCategoryList() {
+    return SizedBox(
+      height: 96,
+      child: GetBuilder<CategoryListController>(
+        builder: (controller) => ListView.separated(
+          separatorBuilder: (context, index) => SizedBox(width: 20),
+          scrollDirection: Axis.horizontal,
+          itemCount: Get.find<CategoryListController>().categoryLength,
+          // primary: true,
+          // shrinkWrap: true,
+          itemBuilder: (context, index) => ProductCategoryItem(
+            catagoryModel: category_controller.categoryModelList[index],
           ),
         ),
       ),

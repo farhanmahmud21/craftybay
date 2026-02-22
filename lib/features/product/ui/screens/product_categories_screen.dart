@@ -1,5 +1,6 @@
 import 'package:craftybay/features/common/ui/controllers/category_list_controller.dart';
-import 'package:craftybay/features/product/ui/widgets/product_category.dart';
+
+import 'package:craftybay/features/product/ui/widgets/product_category_item%5D.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -54,7 +55,10 @@ class _ProductCategoriesScreenState extends State<ProductCategoriesScreen> {
                       mainAxisSpacing: 8,
                       crossAxisSpacing: 2,
                     ),
-                    itemBuilder: (context, index) => ProductCategoryItem(),
+                    itemBuilder: (context, index) => ProductCategoryItem(
+                      catagoryModel:
+                          _categoryController.categoryModelList[index],
+                    ),
                   ),
                 ),
               ),

@@ -21,7 +21,7 @@ class ControllerBinders extends Bindings {
         commonHeaders: commonHeaders(),
       ),
     );
-    Get.put(CatagoryListController());
+    Get.put(CategoryListController());
     Get.put(SignupController());
 
     Get.put(VerifyOtpController());
