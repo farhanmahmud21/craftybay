@@ -13,7 +13,7 @@ class ProductCategoryItem extends StatelessWidget {
       onTap: () => Navigator.pushNamed(
         context,
         ProductListScreen.name,
-        arguments: 'Shoes',
+        arguments: catagoryModel,
       ),
       child: Column(
         children: [
