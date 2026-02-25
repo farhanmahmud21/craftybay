@@ -1,6 +1,6 @@
 import 'package:craftybay/features/common/ui/controllers/category_list_controller.dart';
 
-import 'package:craftybay/features/product/ui/widgets/product_category_item%5D.dart';
+import 'package:craftybay/features/product/ui/widgets/product_category_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,7 +24,7 @@ class _ProductCategoriesScreenState extends State<ProductCategoriesScreen> {
   }
 
   void _loadMoreData() {
-    if (_scrollController.position.extentBefore < 300) {
+    if (_scrollController.position.extentAfter < 300) {
       _categoryController.getCategoryList();
     }
   }

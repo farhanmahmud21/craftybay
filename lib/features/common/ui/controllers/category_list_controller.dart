@@ -14,13 +14,11 @@ class CategoryListController extends GetxController {
   bool _initialLoadingInProgress = false;
   bool get initialLoadingInProgress => _initialLoadingInProgress;
 
-  int get categoryLength =>
-      _categoryModelList.length > 10 ? 10 : _categoryModelList.length;
-
   String get message => _message;
   String? _errorMessage;
   String? get errorMessage => _errorMessage;
-
+  int get categoryLength =>
+      _categoryModelList.length > 10 ? 10 : _categoryModelList.length;
   final List<CatagoryModel> _categoryModelList = [];
   List<CatagoryModel> get categoryModelList => _categoryModelList;
 

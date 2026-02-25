@@ -40,14 +40,19 @@ class _ProductListScreenState extends State<ProductListScreen> {
           init: controller,
           builder: (_) => Visibility(
             visible: controller.initailLoadingProgress == false,
-            replacement: CircularProgressIndicator(),
+            replacement: Center(child: CircularProgressIndicator()),
             child: GridView.builder(
+              controller: _scrollController,
               itemCount: controller.getProductModelList.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 mainAxisSpacing: 16,
               ),
-              itemBuilder: (context, index) => FittedBox(child: ProductCard()),
+              itemBuilder: (context, index) => FittedBox(
+                child: ProductCard(
+                  productModel: controller.getProductModelList[index],
+                ),
+              ),
             ),
           ),
         ),

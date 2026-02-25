@@ -1,10 +1,11 @@
 import 'package:craftybay/app/appColor.dart';
 import 'package:craftybay/app/app_AssetsPath.dart';
+import 'package:craftybay/features/product/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key});
-
+  const ProductCard({super.key, required this.productModel});
+  final ProductModel productModel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,7 +33,9 @@ class ProductCard extends StatelessWidget {
                 topRight: Radius.circular(16),
               ),
             ),
-            child: Image.asset(AppAssetspath.shoeImage0, height: 80, width: 80),
+            child: (productModel.icon.isNotEmpty)
+                ? Image.network(productModel.icon.first, height: 80, width: 80)
+                : Icon(Icons.image_not_supported),
           ),
 
           Padding(
@@ -42,13 +45,16 @@ class ProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'New year Special Shoe',
+                  productModel.title,
                   style: TextStyle(overflow: TextOverflow.ellipsis),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('\$100', style: TextStyle(color: AppColor.themeColor)),
+                    Text(
+                      '\$${productModel.currentPrice}',
+                      style: TextStyle(color: AppColor.themeColor),
+                    ),
                     Wrap(
                       children: [
                         Icon(Icons.star, size: 18, color: Colors.amber),

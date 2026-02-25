@@ -3,7 +3,7 @@ import 'package:craftybay/features/common/ui/controllers/main_bottom_nav_control
 import 'package:craftybay/features/home/ui/controllers/home_slider_controller.dart';
 import 'package:craftybay/features/product/ui/widgets/product_card.dart';
 import 'package:craftybay/features/product/ui/screens/product_details_screen.dart';
-import 'package:craftybay/features/product/ui/widgets/product_category_item%5D.dart';
+import 'package:craftybay/features/product/ui/widgets/product_category_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -98,7 +98,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ProductDetailsScreen.name,
                   arguments: '123',
                 ),
-                child: ProductCard(),
+                child: Container(),
+                // ProductCard(),
               ),
             )
             .toList(),
@@ -113,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
       scrollDirection: Axis.horizontal,
       child: Row(
         spacing: 8,
-        children: [1, 2, 3, 4].map((e) => ProductCard()).toList(),
+        // children: [1, 2, 3, 4].map((e) => ProductCard()).toList(),
       ),
     );
   }
@@ -126,7 +127,8 @@ class _HomeScreenState extends State<HomeScreen> {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         separatorBuilder: (context, index) => SizedBox(width: 10),
-        itemBuilder: (context, index) => ProductCard(),
+        itemBuilder: (context, index) => Container(),
+        // ProductCard(),
         itemCount: 4,
       ),
     );
