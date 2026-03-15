@@ -30,7 +30,7 @@ class ProductImageSlider extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.grey.withValues(alpha: 0.1),
               ),
-              child: Image.asset(images[index]),
+              child: Image.network(images[index]),
             );
           },
 

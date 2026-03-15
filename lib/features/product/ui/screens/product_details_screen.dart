@@ -1,9 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:craftybay/app/appColor.dart';
 import 'package:craftybay/app/app_AssetsPath.dart';
+import 'package:craftybay/features/product/ui/controllers/product_detail_list_controller.dart';
 import 'package:craftybay/features/product/ui/widgets/image_slider.dart';
 import 'package:craftybay/features/product/ui/widgets/inc_dec_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/state_manager.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({super.key, required this.productId});
@@ -16,11 +18,15 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
-  final images = [
-    AppAssetspath.shoeImage0,
-    AppAssetspath.shoeImage1,
-    AppAssetspath.shoeImage2,
-  ];
+
+  ProductDetailListController Pcontroller= ProductDetailListController();
+
+  @override
+  void initState(){
+    super.initState();
+    Pcontroller.getProductDetail(widget.productId);
+  }
+  
   int cartQuantity = 1;
   String selectedColor = 'Red';
   final Map<String, Color> Xcolor = {
@@ -38,19 +44,27 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GetBuilder<ProductDetailListController>(
+      init: Pcontroller,
+      builder: (_) {
+        if (Pcontroller.inProgress){
+         return  Center(child: CircularProgressIndicator());
+        }
+      if(Pcontroller.pDetail==null){
+        return Center(child: Text('No Product Details available'));
+      }
+       return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Product Details',
+         Pcontroller.pDetail!.title,
           style: Theme.of(context).textTheme.titleSmall,
         ),
       ),
 
-      body: Column(
-        children: [
-          Expanded(
-            //Slider Column
-            child: Column(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 //Slider
@@ -58,11 +72,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   valueListenable: activeIndex,
                   builder: (context, value, child) => ProductImageSlider(
                     controller: controller,
-                    images: images,
+                    images: Pcontroller.pDetail!.photos,
                     activeIndex: activeIndex,
                   ),
                 ),
-
+                    
                 //Name Section
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -79,18 +93,18 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Nike 1204HST-new shoe of 2025',
+                                Pcontroller.pDetail!.title,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                               Text(
-                                'Save 30%',
+                                '\$ ${Pcontroller.pDetail!.current_price.toString()}',
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                             ],
                           ),
-
+                  
                           // Name COlumn End
                           Spacer(),
                           // Cart Button
@@ -109,7 +123,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           ),
                         ],
                       ),
-
+                  
                       // Star and Review
                       star_review(),
                     ],
@@ -130,7 +144,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                       Text(
-                        '''Reference Srteafdfsdfkdsgfafafadgsdfggggggggggggggggggggggggggggsdg This is valid and works for multi-line descriptions. Just ensure your string content is correct and you want line breaks where they appea''',
+                       Pcontroller.pDetail!.description,
                         style: Theme.of(context).textTheme.labelMedium,
                         textAlign: TextAlign.justify,
                       ),
@@ -139,17 +153,19 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 ),
               ],
             ),
-          ),
-
-          // Bottom Container
-          _buildPriceAndCartSection(context),
-          // BottomPriceAndButtonContainer(),
-        ],
-      ),
-    );
+          
+            // Bottom Container
+            _buildPriceAndCartSection(context,price: Pcontroller.pDetail!.current_price),
+            // BottomPriceAndButtonContainer(),
+          ],
+        ),
+      ));
+      
+      }
+      );
   }
 
-  Widget _buildPriceAndCartSection(BuildContext context) {
+  Widget _buildPriceAndCartSection(BuildContext context, {required int price}) {
     return Container(
       padding: EdgeInsets.all(16),
 
@@ -168,7 +184,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             children: [
               Text('Price', style: Theme.of(context).textTheme.labelLarge),
               Text(
-                '\$1000',
+               price.toString(),
                 style: Theme.of(
                   context,
                 ).textTheme.labelLarge!.copyWith(color: AppColor.themeColor),

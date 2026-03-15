@@ -1,5 +1,6 @@
 import 'package:craftybay/features/product/data/models/category_model.dart';
 import 'package:craftybay/features/product/ui/controllers/product_list_controller.dart';
+import 'package:craftybay/features/product/ui/screens/product_details_screen.dart';
 import 'package:craftybay/features/product/ui/widgets/product_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -48,9 +49,12 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 crossAxisCount: 3,
                 mainAxisSpacing: 16,
               ),
-              itemBuilder: (context, index) => FittedBox(
-                child: ProductCard(
-                  productModel: controller.getProductModelList[index],
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () => Navigator.pushNamed(context,ProductDetailsScreen.name,arguments: controller.getProductModelList[index].id),
+                child: FittedBox(
+                  child: ProductCard(
+                    productModel: controller.getProductModelList[index],
+                  ),
                 ),
               ),
             ),
